@@ -1,7 +1,13 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Programming R Assignment 2
+## by marko8904
 
-## Prepares a matrix for cached inversion. The result of makeCacheMatrix is used as input for cacheSolve
+## The functions below work together to cache matrix inverses.
+##  For any matrix whose inverse you wish to cache please use makeCacheMatrix on it first
+##  Once you have a result of makeCacheMatrix you can pass it to cacheSolve to compute and inverse and cache it
+##  If you call cacheSolve again on the same matrix it will return the cached value rather than recompute it.
+
+## makeCacheMatrix prepares a matrix for cached inversion.
+##   The result of makeCacheMatrix is used as input for cacheSolve
 ##  x is a matrix whose inverse we wish to compute and cache
 makeCacheMatrix <- function(x = matrix()) {
     #we initialize the inverse as NULL so that we know when it has or hasn't been computed
@@ -28,14 +34,13 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Return a matrix that is the inverse of 'x'
+## cacheSolve return a matrix that is the inverse of 'x'
 #  x must be a result of running makeCacheMatrix on the original matrix that needs to be inverted
 cacheSolve <- function(x, ...) {
     i <- x$getinverse()
     
     # if the inverse was already cached just get it from cached value and return it
     if (!is.null(i)) {
-        message("getting cached data")
         return(i)
     }
     
